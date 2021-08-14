@@ -8,11 +8,15 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
    const { type, item } = action;
+   const { items, totalAmount } = state;
+   const { price, amount } = item;
    switch (type) {
       case "ADD":
+         const updatedItems = items.concat(item);
+         const updatedTotalAmount = totalAmount + price * amount;
          return {
-            items: { ...state, item },
-            totalAmount: state.totalAmount + item.price * item.amount,
+            items: updatedItems,
+            totalAmount: updatedTotalAmount,
          };
       default:
          return state;
@@ -25,7 +29,7 @@ const CartProvider = ({ children }) => {
       dispatchCart({ type: "ADD", item });
    };
    const removeItem = (id) => {
-      dispatchCart({ type: "REMOVE", id })
+      dispatchCart({ type: "REMOVE", id });
    };
    const { items, totalAmount } = cartState;
    const cartContext = {
