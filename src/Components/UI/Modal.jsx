@@ -1,8 +1,8 @@
 import React from "react";
 import { createPortal } from "react-dom";
 
-const Backdrop = () => {
-   return <div className="backdrop" />;
+const Backdrop = ({ onHideCart }) => {
+   return <div onClick={onHideCart} className="backdrop" />;
 };
 
 const ModalOverlay = ({ children }) => {
@@ -13,11 +13,11 @@ const ModalOverlay = ({ children }) => {
    );
 };
 
-const Modal = ({ children }) => {
+const Modal = ({ children, onHideCart }) => {
    const portalElement = document.getElementById("overlays");
    return (
       <>
-         {createPortal(<Backdrop />, portalElement)}
+         {createPortal(<Backdrop onHideCart={onHideCart} />, portalElement)}
          {createPortal(<ModalOverlay>{children}</ModalOverlay>, portalElement)}
       </>
    );
