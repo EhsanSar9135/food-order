@@ -5,8 +5,8 @@ const Cart = ({ onHideCart }) => {
    const cartItems = (
       <ul className="cart-items">
          {[{ id: "c1", name: "Sushi", amount: 2, price: "12.99" }].map(
-            ({ name }) => (
-               <li>{name}</li>
+            ({ name, id }) => (
+               <li key={id}>{name}</li>
             )
          )}
       </ul>
