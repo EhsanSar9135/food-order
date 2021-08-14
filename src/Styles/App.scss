@@ -2,6 +2,16 @@
 
 * {
    box-sizing: border-box;
+   scrollbar-width: thin;
+   scrollbar-color: hsla(0, 0%, 70%, 0.5);
+
+   &::-webkit-scrollbar {
+      width: 5px;
+   }
+
+   &::-webkit-scrollbar-thumb {
+      background-color: hsla(0, 0%, 70%, 0.5);
+   }
 }
 
 html {
@@ -23,3 +33,4 @@ body {
 @import "Input";
 @import "Cart";
 @import "Modal";
+@import "CartItem";
