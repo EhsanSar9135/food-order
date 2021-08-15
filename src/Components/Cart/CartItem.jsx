@@ -1,21 +1,18 @@
-import React from "react";
-
-const CartItem = ({ item }) => {
-   const { price, name, amount, onAdd, onRemove } = item;
-   const fixedPrice = `$${price.toFixed(2)}`;
+const CartItem = (props) => {
+   const price = `$${props.price.toFixed(2)}`;
 
    return (
       <li className="cart-item">
          <div>
-            <h2>{name}</h2>
+            <h2>{props.name}</h2>
             <div className="summary">
-               <span className="price">{fixedPrice}</span>
-               <span className="amount">x {amount}</span>
+               <span className="price">{price}</span>
+               <span className="amount">x {props.amount}</span>
             </div>
          </div>
          <div className="actions">
-            <button onClick={onRemove}>−</button>
-            <button onClick={onAdd}>+</button>
+            <button onClick={props.onRemove}>−</button>
+            <button onClick={props.onAdd}>+</button>
          </div>
       </li>
    );
